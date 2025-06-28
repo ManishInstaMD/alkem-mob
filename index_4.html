@@ -14,10 +14,6 @@
         padding: 0;
       }
 
-      .d-none {
-        display: none;
-      }
-
       body {
         overflow-x: hidden;
         font-family: Arial, sans-serif;
@@ -37,13 +33,13 @@
         background-size: cover;
         background-position: center;
         width: 100%;
-        height: 88%;
+        height: 80%;
         position: absolute;
         left: 0;
         top: 8px;
       }
 
-      .logo {
+      .logo1 {
         background: url(images/anti.png);
         width: 150px;
         height: 80px;
@@ -55,23 +51,23 @@
         z-index: 10;
       }
 
-      .logo1 {
-        background: url(images/family.png);
+      .logo {
+        background: url(images/hanshake.png);
         width: 100%;
-        max-width: 400px;
-        height: 250px;
+        max-width: 500px;
+        height: 40vh;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 25%;
-        left: 10%;
+        top: 15%;
+        left: 5%;
       }
 
       .head_right_img {
-        background: url(images/across.png);
+        background: url(images/thankyou.png);
         width: 100%;
-        max-width: 400px;
-        height: 250px;
+        max-width: 500px;
+        height: 30vh;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
@@ -80,51 +76,14 @@
       }
 
       .head_right1_img {
-        background: url(images/joinus.png);
-        width: 100%;
-        max-width: 400px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: 45%;
-        right: 5%;
-      }
-
-      .curapholic {
-        background: url(images/calciapt-slide-4_5-1.png);
+        background: url(images/joining.png);
         width: 100%;
         max-width: 500px;
-        height: 200px;
+        height: 25vh;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .curapholic2 {
-        background: url(images/calciapt-slide-4-2.png);
-        width: 100%;
-        max-width: 400px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 15%;
-        left: 5%;
-      }
-
-      .curapholic3 {
-        background: url(images/calciapt-slide-4-3.png);
-        width: 100%;
-        max-width: 400px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 15%;
+        top: 50%;
         right: 5%;
       }
 
@@ -141,354 +100,158 @@
         z-index: 10;
       }
 
-      .footer2 {
-        background: url(images/nextButton.png);
-        width: 150px;
-        height: 50px;
-        background-size: contain;
-        background-repeat: no-repeat;
+      .doctor-name {
         position: absolute;
-        bottom: 5%;
-        right: 10%;
-        cursor: pointer;
-        z-index: 10;
-      }
-
-      #doctorForm {
-        position: absolute;
-        top: 60%;
-        right: 5%;
-        width: 90%;
-        max-width: 400px;
-        z-index: 9999;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      #doctorForm input {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 12px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        outline: none;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: border-color 0.2s ease;
-      }
-
-      .doctors-count-box {
-        position: absolute;
-        top: 15%;
-        right: 5%;
-        width: 90%;
-        max-width: 500px;
-        padding: 15px;
-        background-color: white;
-        border: 2px solid #007bff;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        font-family: "Segoe UI", sans-serif;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: #d55d5d;
+        font-weight: bold;
+        font-family: sans-serif;
         text-align: center;
-        z-index: 999;
-      }
-
-      .doctors-count-box .count {
-        font-size: 32px;
-        font-weight: bold;
-        color: #f4751e;
-        margin-bottom: 8px;
-      }
-
-      .doctors-count-box .subtitle {
-        font-size: 18px;
-        color: #333;
-        font-weight: 600;
-      }
-
-      .doctors-count-box .india {
-        font-size: 22px;
-        font-weight: bold;
-        margin: 6px 0;
-      }
-
-      .doctors-count-box .india-text {
-        color: #0047ab;
-        margin: 0 6px;
-      }
-
-      .doctors-count-box .footer-text {
-        font-size: 16px;
-        color: #444;
-        margin-top: 6px;
+        width: 90%;
+        max-width: 600px;
       }
 
       /* Media Queries */
       @media (max-width: 1024px) {
-        .logo1 {
-          top: 20%;
-          height: 200px;
+        .logo {
+          height: 35vh;
+          top: 12%;
         }
 
         .head_right_img {
-          height: 200px;
+          height: 25vh;
         }
 
-        .curapholic {
-          height: 180px;
+        .head_right1_img {
+          height: 20vh;
+          top: 45%;
         }
 
-        .doctors-count-box {
-          top: 12%;
-          padding: 12px;
+        .doctor-name {
+          font-size: 30px;
+          top: 40%;
+          color: #ef7f1a;
         }
       }
 
       @media (max-width: 768px) {
-        .logo {
+        .logo1 {
           width: 120px;
           height: 60px;
         }
 
-        .logo1 {
-          top: 15%;
-          left: 5%;
-          height: 180px;
+        .logo {
+          height: 30vh;
+          top: 10%;
+          left: 3%;
         }
 
         .head_right_img {
-          top: 12%;
-          height: 150px;
+          height: 20vh;
+          top: 10%;
+          right: 3%;
         }
 
         .head_right1_img {
+          height: 18vh;
           top: 40%;
-          height: 150px;
+          right: 3%;
         }
 
-        .curapholic {
+        .doctor-name {
+          font-size: 25px;
           top: 35%;
-          height: 150px;
+          color: #ef7f1a;
         }
 
-        .curapholic2,
-        .curapholic3 {
-          height: 120px;
-          bottom: 10%;
-        }
-
-        .doctors-count-box {
-          top: 10%;
-          padding: 10px;
-        }
-
-        .doctors-count-box .count {
-          font-size: 28px;
-        }
-
-        .doctors-count-box .subtitle {
-          font-size: 16px;
-        }
-
-        .doctors-count-box .india {
-          font-size: 20px;
-        }
-
-        .footer2 {
-          width: 120px;
-          height: 40px;
-          bottom: 3%;
+        .footer1 {
+          width: 35px;
+          height: 35px;
+          bottom: 40%;
         }
       }
 
       @media (max-width: 480px) {
-        .logo {
-          width: 104px;
-          height: 53px;
-          top: 16px;
-          left: 28px;
+        .logo1 {
+          width: 106px;
+          height: 56px;
+          top: 20px;
+          left: 26px;
         }
 
-        .logo1 {
-          width: 50%;
-          top: 59%;
-          height: 224px;
-          left: 32%;
+        .logo {
+          width: 59%;
+          height: 34vh;
+          top: 48%;
+          left: 30%;
         }
 
         .head_right_img {
+          width: 72%;
+          height: 15vh;
           top: 10%;
-          height: 100px;
-          right: 3%;
+          right: 13%;
         }
 
         .head_right1_img {
-          width: 86%;
-          top: 31%;
-          height: 100px;
-          right: 7%;
+          width: 90%;
+          height: 20vh;
+          top: 29%;
+          right: 5%;
         }
 
-        .curapholic {
-          top: 30%;
-          height: 100px;
-        }
-
-        .curapholic2,
-        .curapholic3 {
-          height: 80px;
-          bottom: 8%;
-        }
-
-        .curapholic2 {
-          left: 3%;
-        }
-
-        .curapholic3 {
-          right: 3%;
-        }
-
-        .doctors-count-box {
-          top: 10%;
-          padding: 8px;
-        }
-
-        .doctors-count-box .count {
-          font-size: 24px;
-        }
-
-        .doctors-count-box .subtitle {
-          font-size: 14px;
-        }
-
-        .doctors-count-box .india {
-          font-size: 18px;
-        }
-
-        .doctors-count-box .footer-text {
-          font-size: 14px;
-        }
-
-        #doctorForm {
-          left: 11%;
-          width: 81%;
-          top: 39%;
-          padding: 15px;
-        }
-
-        #doctorForm input {
-          padding: 10px;
-          font-size: 14px;
+        .doctor-name {
+          font-size: 22px;
+          top: 23%;
+          color: #ef7f1a;
         }
 
         .footer1 {
           width: 30px;
           height: 30px;
-          bottom: 40%;
+          bottom: 35%;
         }
+      }
 
-        .footer2 {
-          width: 100px;
-          height: 20px;
-          bottom: 14%;
-          left: 75%;
+      @media (max-width: 360px) {
+        .doctor-name {
+          font-size: 20px;
+          top: 28%;
+          color: #ef7f1a;
         }
       }
     </style>
 
     <div id="wrapper" class="main_wrap">
       <div class="page01"></div>
-      <div class="logo"></div>
       <div class="logo1"></div>
-      <div class="doctors-count-box" id="doctorsCountBox">
-        <div class="count">1000+</div>
-        <div class="subtitle">Doctors across</div>
-        <div class="india"><span class="india-text">INDIA</span></div>
-        <div class="footer-text">
-          have participated for the novel initiative
-        </div>
-      </div>
+      <div class="logo"></div>
       <div class="head_right_img"></div>
       <div class="head_right1_img"></div>
 
-      <!-- Doctor Form -->
-      <form id="doctorForm" onsubmit="submitForm(event)">
-        <input
-          type="text"
-          id="doctorName"
-          name="doctorName"
-          placeholder="Doctor's Name"
-          required
-        />
-        <input
-          type="email"
-          id="doctorEmail"
-          name="doctorEmail"
-          placeholder="Doctor's Email"
-          required
-        />
-      </form>
+      <!-- Doctor Name Display -->
+      <div id="user-name" class="doctor-name">Welcome, Doctor</div>
 
-      <div class="curapholic"></div>
-      <div class="curapholic2"></div>
-      <div class="curapholic3"></div>
-
-      <a href="index_2.html">
+      <a href="index.html">
         <div class="footer1"></div>
       </a>
-
-      <!-- Trigger form submit -->
-      <div class="footer2" onclick="submitForm(event)"></div>
     </div>
 
     <script>
-      function submitForm(event) {
-        if (event) event.preventDefault();
-        const name = document.getElementById("doctorName").value.trim();
-        const email = document.getElementById("doctorEmail").value.trim();
-        if (!name || !email) {
-          alert("Please enter both name and email.");
-          return;
-        }
-
-        const apiUrl = "https://crm.instamd.co.in/api/alkem/createdoctor";
-        fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            const doctor = data.data;
-            window.location.href = `index_5.html?user_id=${
-              doctor.id
-            }&doctor_name=${encodeURIComponent(doctor.name)}`;
-          })
-          .catch((err) => {
-            console.error("Submission error:", err);
-            alert("Error submitting form. Please try again.");
-          });
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
       }
 
-      // Fetch total doctor count
-      function loadDoctorCount() {
-        const countBox = document.getElementById("doctorsCountBox");
-
-        fetch("https://crm.instamd.co.in/api/alkem/usercount")
-          .then((res) => res.json())
-          .then((data) => {
-            const total = data.total || 1000; // fallback
-            countBox.querySelector(".count").textContent = `${total}+`;
-          })
-          .catch((err) => {
-            console.error("Error fetching count:", err);
-            countBox.querySelector(".count").textContent = "1000+";
-          });
+      const userName = getQueryParam("doctor_name"); // get name from URL
+      if (userName) {
+        document.getElementById(
+          "user-name"
+        ).innerText = `Dr. ${decodeURIComponent(userName)}`;
       }
-
-      window.onload = loadDoctorCount;
     </script>
   </body>
 </html>
