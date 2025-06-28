@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Calciapt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      #wrapper {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        background-size: cover;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .page01 {
+        background: url(images/bg2.png);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .logo1 {
+        background: url(images/anti.png);
+        width: 150px;
+        height: 80px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+      }
+
+      .logo {
+        background: url(images/hanshake.png);
+        width: 100%;
+        max-width: 500px;
+        height: 40vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15%;
+        left: 5%;
+      }
+
+      .head_right_img {
+        background: url(images/thankyou.png);
+        width: 100%;
+        max-width: 500px;
+        height: 30vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15%;
+        right: 5%;
+      }
+
+      .head_right1_img {
+        background: url(images/joining.png);
+        width: 100%;
+        max-width: 500px;
+        height: 25vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        right: 5%;
+      }
+
+      .footer1 {
+        background: url(images/arrow_pre.webp);
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 45%;
+        left: 10px;
+        transform: rotate(180deg);
+        z-index: 10;
+      }
+
+      .doctor-name {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        color: #d55d5d;
+        font-weight: bold;
+        font-family: sans-serif;
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+      }
+
+      /* Media Queries */
+      @media (max-width: 1024px) {
+        .logo {
+          height: 35vh;
+          top: 12%;
+        }
+
+        .head_right_img {
+          height: 25vh;
+        }
+
+        .head_right1_img {
+          height: 20vh;
+          top: 45%;
+        }
+
+        .doctor-name {
+          font-size: 22px;
+          top: 40%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .logo1 {
+          width: 120px;
+          height: 60px;
+        }
+
+        .logo {
+          height: 30vh;
+          top: 10%;
+          left: 3%;
+        }
+
+        .head_right_img {
+          height: 20vh;
+          top: 10%;
+          right: 3%;
+        }
+
+        .head_right1_img {
+          height: 18vh;
+          top: 40%;
+          right: 3%;
+        }
+
+        .doctor-name {
+          font-size: 20px;
+          top: 35%;
+        }
+
+        .footer1 {
+          width: 35px;
+          height: 35px;
+          bottom: 40%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo1 {
+          width: 100px;
+          height: 50px;
+          top: 10px;
+          left: 10px;
+        }
+
+        .logo {
+          width: 61%;
+          height: 32vh;
+          top: 58%;
+          left: 26%;
+        }
+
+        .head_right_img {
+          width: 72%;
+          height: 15vh;
+          top: 14%;
+          right: 13%;
+        }
+
+        .head_right1_img {
+          width: 93%;
+          height: 20vh;
+          top: 37%;
+          right: -2%;
+        }
+
+        .doctor-name {
+          font-size: 18px;
+          top: 30%;
+        }
+
+        .footer1 {
+          width: 30px;
+          height: 30px;
+          bottom: 35%;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .doctor-name {
+          font-size: 16px;
+          top: 28%;
+        }
+      }
+    </style>
+
+    <div id="wrapper" class="main_wrap">
+      <div class="page01"></div>
+      <div class="logo1"></div>
+      <div class="logo"></div>
+      <div class="head_right_img"></div>
+      <div class="head_right1_img"></div>
+
+      <!-- Doctor Name Display -->
+      <div id="user-name" class="doctor-name">Welcome, Doctor</div>
+
+      <a href="index.html">
+        <div class="footer1"></div>
+      </a>
+    </div>
+
+    <script>
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      const userName = getQueryParam("doctor_name"); // get name from URL
+      if (userName) {
+        document.getElementById(
+          "user-name"
+        ).innerText = `Dr. ${decodeURIComponent(userName)}`;
+      }
+    </script>
+  </body>
+</html>

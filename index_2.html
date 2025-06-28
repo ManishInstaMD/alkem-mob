@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Calciapt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .d-none {
+        display: none;
+      }
+
+      body {
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      #wrapper {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        background-size: cover;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .page01 {
+        background: url(images/bg2.png);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .logo {
+        background: url(images/anti.png);
+        width: 150px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+      .logo1 {
+        background: url(images/red.png);
+        width: 300px;
+        height: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .head_right_img {
+        background: url(images/joinHand.png);
+        width: 300px;
+        height: 250px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 15%;
+        right: 5%;
+      }
+
+      .head_right1_img {
+        background: url(images/record.png);
+        width: 250px;
+        height: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 45%;
+        right: 5%;
+      }
+
+      .head_right2_img {
+        background: url(images/bookrecord.png);
+        width: 120px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 53%;
+        right: 20%;
+      }
+
+      .head_right3_img {
+        background: url(images/efforts.png);
+        width: 300px;
+        height: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 70%;
+        right: 5%;
+      }
+
+      .curapholic {
+        background: url(images/calciapt-slide-3-2.png);
+        width: 400px;
+        height: 200px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer {
+        background: url(images/reference-button.png);
+        width: 80px;
+        height: 80px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .footer1 {
+        background: url(images/arrow_pre.webp);
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 50%;
+        left: 10px;
+        transform: rotate(180deg);
+        z-index: 10;
+      }
+
+      .footer2 {
+        background: url(images/nextButton.png);
+        width: 120px;
+        height: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+        z-index: 10;
+      }
+
+      .popup {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 5%;
+      }
+
+      .popup img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(14, 13, 13, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      /* Media Queries */
+      @media (max-width: 1024px) {
+        .logo1 {
+          width: 250px;
+          height: 150px;
+          top: 20%;
+        }
+
+        .head_right_img {
+          width: 250px;
+          height: 200px;
+        }
+
+        .curapholic {
+          width: 350px;
+          height: 180px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .logo1 {
+          width: 200px;
+          height: 120px;
+          top: 15%;
+          left: 5%;
+        }
+
+        .head_right_img {
+          width: 200px;
+          height: 150px;
+          top: 12%;
+        }
+
+        .head_right1_img {
+          width: 180px;
+          height: 140px;
+          top: 40%;
+        }
+
+        .head_right2_img {
+          width: 100px;
+          height: 80px;
+          top: 50%;
+          right: 15%;
+        }
+
+        .head_right3_img {
+          width: 250px;
+          height: 120px;
+          top: 65%;
+        }
+
+        .curapholic {
+          width: 300px;
+          height: 150px;
+          bottom: 10%;
+        }
+
+        .footer2 {
+          width: 100px;
+          height: 40px;
+          bottom: 8%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          width: 100px;
+          height: 60px;
+          top: 10px;
+          left: 10px;
+        }
+
+        .logo1 {
+          width: 150px;
+          height: 153px;
+          top: 70%;
+          left: 28%;
+        }
+
+        .head_right_img {
+          width: 273px;
+          height: 172px;
+          top: 12%;
+          right: 13%;
+        }
+
+        .head_right1_img {
+          width: 244px;
+          height: 117px;
+          top: 36%;
+          left: 15%;
+        }
+
+        .head_right2_img {
+          width: 168px;
+          height: 111px;
+          top: 47%;
+          right: 28%;
+        }
+
+        .head_right3_img {
+          width: 267px;
+          height: 94px;
+          top: 63%;
+          left: 13%;
+        }
+
+        .curapholic {
+          width: 250px;
+          height: 120px;
+          bottom: 8%;
+        }
+
+        .footer1 {
+          width: 30px;
+          height: 30px;
+        }
+
+        .footer2 {
+          width: 100px;
+          height: 20px;
+          bottom: 4%;
+          left: 73%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper" class="main_wrap">
+      <div class="page01"></div>
+      <div class="logo"></div>
+      <div class="logo1" id="logo1"></div>
+      <div class="head_right_img"></div>
+      <div class="head_right1_img"></div>
+      <div class="head_right2_img"></div>
+      <div class="head_right3_img"></div>
+      <div class="curapholic"></div>
+      <a href="index_1.html">
+        <div class="footer1"></div>
+      </a>
+      <a href="index_3.html">
+        <div class="footer2"></div>
+      </a>
+
+      <script>
+        const logo1 = document.getElementById("logo1");
+        let isOriginal = true;
+
+        logo1.addEventListener("click", function () {
+          if (isOriginal) {
+            this.style.backgroundImage = "url('images/green.png')";
+          } else {
+            this.style.backgroundImage = "url('images/red.png')";
+          }
+          isOriginal = !isOriginal;
+        });
+      </script>
+    </div>
+  </body>
+</html>

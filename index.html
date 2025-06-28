@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Alkem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .d-none {
+        display: none;
+      }
+
+      body {
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      #wrapper {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        background-size: cover;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      .page01 {
+        background: url(images/bg1.png);
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .logo {
+        background: url(images/left1.png);
+        width: 42%;
+        height: 99%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 124px;
+        left: 75px;
+      }
+      .head_top_img {
+        background: url(images/top1.png);
+        width: 17%;
+        height: 109%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 147px;
+        right: 225px;
+      }
+
+      .head_right_img {
+        background: url(images/right1.png);
+        width: 40%;
+        height: 95%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 238px;
+        right: 105px;
+      }
+
+      .head_right1_img {
+        background: url(images/bottom1.png);
+        width: 40%;
+        height: 95%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 520px;
+        right: 105px;
+      }
+
+      .footer1 {
+        background: url(images/arrow_pre.webp);
+        width: 50px;
+        height: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 45%;
+        left: 10px;
+        transform: rotate(180deg);
+        z-index: 10;
+      }
+
+      .footer2 {
+        background: url(images/nextButton.png);
+        width: 200px;
+        height: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 15%;
+        right: 10%;
+        z-index: 10;
+      }
+
+      .popup {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: 5%;
+      }
+
+      .popup img {
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(14, 13, 13, 0.7);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 101;
+      }
+
+      /* Media Queries for different screen sizes */
+      @media (max-width: 768px) {
+        .logo {
+          top: 5%;
+          height: 30vh;
+        }
+        .head_top_img {
+          top: 10%;
+          height: 25vh;
+        }
+
+        .head_right_img {
+          top: 10%;
+          height: 25vh;
+        }
+
+        .head_right1_img {
+          top: 45%;
+          height: 20vh;
+        }
+
+        .head_right2_img {
+          top: 65%;
+          height: 15vh;
+          right: 10%;
+        }
+
+        .footer1 {
+          bottom: 40%;
+          width: 40px;
+          height: 40px;
+        }
+
+        .footer2 {
+          width: 150px;
+          height: 40px;
+          bottom: 10%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          width: 84%;
+          top: 54%;
+          height: 66vh;
+          left: 6%;
+        }
+        .head_top_img {
+          width: 47%;
+          top: 12%;
+          height: 66vh;
+          left: 25%;
+        }
+
+        .head_right_img {
+          width: 85%;
+          top: 17%;
+          height: 24vh;
+          right: 9%;
+        }
+
+        .head_right1_img {
+          width: 60%;
+          top: 35%;
+          height: 15vh;
+          right: 18%;
+        }
+
+        .head_right2_img {
+          top: 60%;
+          height: 12vh;
+          right: 5%;
+        }
+
+        .footer1 {
+          bottom: 35%;
+          width: 30px;
+          height: 30px;
+        }
+
+        .footer2 {
+          width: 100px;
+          height: 20px;
+          bottom: 4%;
+          left: 73%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper" class="main_wrap">
+      <div class="page01"></div>
+      <div class="logo"></div>
+      <div class="head_top_img"></div>
+      <div class="head_right_img"></div>
+      <div class="head_right1_img"></div>
+      <div class="head_right2_img"></div>
+
+      <a href="index.html">
+        <div class="footer1"></div>
+      </a>
+      <a href="index_1.html">
+        <div class="footer2"></div>
+      </a>
+    </div>
+  </body>
+</html>
