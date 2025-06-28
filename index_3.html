@@ -37,7 +37,7 @@
         background-size: cover;
         background-position: center;
         width: 100%;
-        height: 80%;
+        height: 88%;
         position: absolute;
         left: 0;
         top: 8px;
@@ -45,59 +45,61 @@
 
       .logo {
         background: url(images/anti.png);
-        width: 120px;
-        height: 48px;
+        width: 150px;
+        height: 80px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 24px;
-        left: 30px;
+        top: 20px;
+        left: 20px;
         z-index: 10;
       }
 
       .logo1 {
         background: url(images/family.png);
-        width: 54%;
-        height: 228px;
+        width: 100%;
+        max-width: 400px;
+        height: 250px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 52%;
-        left: 30%;
+        top: 25%;
+        left: 10%;
       }
 
       .head_right_img {
         background: url(images/across.png);
         width: 100%;
         max-width: 400px;
-        height: 100px;
+        height: 250px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 10%;
-        right: 3%;
+        top: 15%;
+        right: 5%;
       }
 
       .head_right1_img {
         background: url(images/joinus.png);
-        width: 75%;
-        height: 100px;
+        width: 100%;
+        max-width: 400px;
+        height: 200px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 30%;
-        right: 12%;
+        top: 45%;
+        right: 5%;
       }
 
       .curapholic {
         background: url(images/calciapt-slide-4_5-1.png);
         width: 100%;
         max-width: 500px;
-        height: 100px;
+        height: 200px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        top: 30%;
+        top: 40%;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -106,34 +108,34 @@
         background: url(images/calciapt-slide-4-2.png);
         width: 100%;
         max-width: 400px;
-        height: 80px;
+        height: 150px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        bottom: 8%;
-        left: 3%;
+        bottom: 15%;
+        left: 5%;
       }
 
       .curapholic3 {
         background: url(images/calciapt-slide-4-3.png);
         width: 100%;
         max-width: 400px;
-        height: 80px;
+        height: 150px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        bottom: 8%;
-        right: 3%;
+        bottom: 15%;
+        right: 5%;
       }
 
       .footer1 {
         background: url(images/arrow_pre.webp);
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        bottom: 40%;
+        bottom: 45%;
         left: 10px;
         transform: rotate(180deg);
         z-index: 10;
@@ -141,34 +143,35 @@
 
       .footer2 {
         background: url(images/nextButton.png);
-        width: 120px;
-        height: 26px;
+        width: 150px;
+        height: 50px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        bottom: 22%;
-        left: 73%;
+        bottom: 5%;
+        right: 10%;
         cursor: pointer;
         z-index: 10;
       }
 
       #doctorForm {
         position: absolute;
-        left: 13%;
-        width: 74%;
-        top: 36%;
-        padding: 15px;
+        top: 60%;
+        right: 5%;
+        width: 90%;
+        max-width: 400px;
         z-index: 9999;
         background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
         border-radius: 10px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       }
 
       #doctorForm input {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin-bottom: 12px;
-        font-size: 14px;
+        font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 6px;
         outline: none;
@@ -178,11 +181,11 @@
 
       .doctors-count-box {
         position: absolute;
-        top: 9%;
+        top: 15%;
         right: 5%;
         width: 90%;
         max-width: 500px;
-        padding: 8px;
+        padding: 15px;
         background-color: white;
         border: 2px solid #007bff;
         border-radius: 12px;
@@ -193,20 +196,20 @@
       }
 
       .doctors-count-box .count {
-        font-size: 48px;
+        font-size: 32px;
         font-weight: bold;
         color: #f4751e;
         margin-bottom: 8px;
       }
 
       .doctors-count-box .subtitle {
-        font-size: 14px;
+        font-size: 18px;
         color: #333;
         font-weight: 600;
       }
 
       .doctors-count-box .india {
-        font-size: 18px;
+        font-size: 22px;
         font-weight: bold;
         margin: 6px 0;
       }
@@ -217,39 +220,198 @@
       }
 
       .doctors-count-box .footer-text {
-        font-size: 14px;
+        font-size: 16px;
         color: #444;
         margin-top: 6px;
       }
 
+      /* Media Queries */
+      @media (max-width: 1024px) {
+        .logo1 {
+          top: 20%;
+          height: 200px;
+        }
+
+        .head_right_img {
+          height: 200px;
+        }
+
+        .curapholic {
+          height: 180px;
+        }
+
+        .doctors-count-box {
+          top: 12%;
+          padding: 12px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          width: 120px;
+          height: 60px;
+        }
+
+        .logo1 {
+          top: 15%;
+          left: 5%;
+          height: 180px;
+        }
+
+        .head_right_img {
+          top: 12%;
+          height: 150px;
+        }
+
+        .head_right1_img {
+          top: 40%;
+          height: 150px;
+        }
+
+        .curapholic {
+          top: 35%;
+          height: 150px;
+        }
+
+        .curapholic2,
+        .curapholic3 {
+          height: 120px;
+          bottom: 10%;
+        }
+
+        .doctors-count-box {
+          top: 10%;
+          padding: 10px;
+        }
+
+        .doctors-count-box .count {
+          font-size: 28px;
+        }
+
+        .doctors-count-box .subtitle {
+          font-size: 16px;
+        }
+
+        .doctors-count-box .india {
+          font-size: 20px;
+        }
+
+        .footer2 {
+          width: 120px;
+          height: 40px;
+          bottom: 3%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          width: 104px;
+          height: 53px;
+          top: 16px;
+          left: 28px;
+        }
+
+        .logo1 {
+          width: 50%;
+          top: 59%;
+          height: 224px;
+          left: 32%;
+        }
+
+        .head_right_img {
+          top: 10%;
+          height: 100px;
+          right: 3%;
+        }
+
+        .head_right1_img {
+          width: 86%;
+          top: 31%;
+          height: 100px;
+          right: 7%;
+        }
+
+        .curapholic {
+          top: 30%;
+          height: 100px;
+        }
+
+        .curapholic2,
+        .curapholic3 {
+          height: 80px;
+          bottom: 8%;
+        }
+
+        .curapholic2 {
+          left: 3%;
+        }
+
+        .curapholic3 {
+          right: 3%;
+        }
+
+        .doctors-count-box {
+          top: 10%;
+          padding: 8px;
+        }
+
+        .doctors-count-box .count {
+          font-size: 24px;
+        }
+
+        .doctors-count-box .subtitle {
+          font-size: 14px;
+        }
+
+        .doctors-count-box .india {
+          font-size: 18px;
+        }
+
+        .doctors-count-box .footer-text {
+          font-size: 14px;
+        }
+
+        #doctorForm {
+          left: 11%;
+          width: 81%;
+          top: 39%;
+          padding: 15px;
+        }
+
+        #doctorForm input {
+          padding: 10px;
+          font-size: 14px;
+        }
+
+        .footer1 {
+          width: 30px;
+          height: 30px;
+          bottom: 40%;
+        }
+
+        .footer2 {
+          width: 120px;
+          height: 24px;
+          bottom: 14%;
+          left: 72%;
+        }
+      }
+
       .text {
+        font-family: "Segoe UI", sans-serif;
+        font-weight: bold;
+        color: #333;
+        font-size: 18px;
+      }
+
+      .text1{
+        font-family: "Segoe UI", sans-serif;
+        font-weight: bold;
         color: black;
-        font-size: large;
-        font-weight: bold;
+        font-size: 16px;
       }
 
-      .text1 {
-        color: #f4751e;
-        font-size: large;
-        font-weight: bold;
-      }
-
-      /* Animation for counter */
-      @keyframes countUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .counting {
-        animation: countUp 0.5s ease-out forwards;
-      }
-
+      /* Add these new styles to your existing CSS */
       @keyframes celebrate {
         0% {
           transform: scale(1);
@@ -295,10 +457,8 @@
       <div class="logo"></div>
       <div class="logo1"></div>
       <div class="doctors-count-box" id="doctorsCountBox">
-        <div class="count">0</div>
-        <div class="subtitle">
-          <span class="text">Doctors</span> <span class="text1"> across</span>
-        </div>
+        <div class="count">1000+</div>
+        <div class="subtitle"><span class="text">Doctors</span> <span class="text1">across</span></div>
         <div class="india"><span class="india-text">INDIA</span></div>
         <div class="footer-text">
           have participated for the novel initiative
@@ -338,71 +498,47 @@
     </div>
 
     <script>
-      // Enhanced animateCounter function for large numbers
-      function animateCounter(element, target, duration = 2000) {
-        const start = 0;
-        const startTime = performance.now();
-        const countElement = element;
-
-        // Format large numbers with commas
-        function formatNumber(num) {
-          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      function submitForm(event) {
+        if (event) event.preventDefault();
+        const name = document.getElementById("doctorName").value.trim();
+        const email = document.getElementById("doctorEmail").value.trim();
+        if (!name || !email) {
+          alert("Please enter both name and email.");
+          return;
         }
 
-        function updateCount(currentTime) {
-          const elapsedTime = currentTime - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
-
-          // Ease-out function for smoother deceleration
-          const easedProgress = 1 - Math.pow(1 - progress, 3);
-          const currentCount = Math.floor(easedProgress * target);
-
-          countElement.textContent = `${formatNumber(currentCount)}+`;
-          countElement.classList.add("counting");
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCount);
-          } else {
-            // Final update with exact target number
-            countElement.textContent = `${formatNumber(target)}+`;
-            countElement.classList.remove("counting");
-
-            // Add celebration effect for large numbers
-            if (target > 5000) {
-              countElement.classList.add("celebrate");
-              setTimeout(() => {
-                countElement.classList.remove("celebrate");
-              }, 1000);
-            }
-          }
-        }
-
-        // Start the animation
-        requestAnimationFrame(updateCount);
+        const apiUrl = "https://crm.instamd.co.in/api/alkem/createdoctor";
+        fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const doctor = data.data;
+            window.location.href = `index_4.html?user_id=${
+              doctor.id
+            }&doctor_name=${encodeURIComponent(doctor.name)}`;
+          })
+          .catch((err) => {
+            console.error("Submission error:", err);
+            alert("Error submitting form. Please try again.");
+          });
       }
 
-      // Fetch total doctor count with error handling
+      // Fetch total doctor count
       function loadDoctorCount() {
         const countBox = document.getElementById("doctorsCountBox");
-        const countElement = countBox.querySelector(".count");
-
-        // Start with 0
-        countElement.textContent = "0";
 
         fetch("https://crm.instamd.co.in/api/alkem/usercount")
-          .then((res) => {
-            if (!res.ok) throw new Error("Network response was not ok");
-            return res.json();
-          })
+          .then((res) => res.json())
           .then((data) => {
             const total = data.total || 1000; // fallback
-            animateCounter(countElement, total, total > 10000 ? 3000 : 2000);
+            countBox.querySelector(".count").textContent = `${total}+`;
           })
           .catch((err) => {
             console.error("Error fetching count:", err);
-            // Use a random impressive number between 5000-15000 when API fails
-            const impressiveCount = 5000 + Math.floor(Math.random() * 10000);
-            animateCounter(countElement, impressiveCount, 2500);
+            countBox.querySelector(".count").textContent = "1000+";
           });
       }
 
