@@ -247,10 +247,10 @@
         }
 
         .logo1 {
-          width: 50%;
+          width: 47%;
           top: 59%;
           height: 224px;
-          left: 32%;
+          left: 29%;
         }
 
         .head_right_img {
@@ -301,9 +301,9 @@
 
         .footer2 {
           width: 120px;
-          height: 24px;
+          height: 30px;
           bottom: 14%;
-          left: 72%;
+          left: 65%;
         }
       }
 
@@ -314,7 +314,7 @@
         font-size: 18px;
       }
 
-      .text1{
+      .text1 {
         font-family: "Segoe UI", sans-serif;
         font-weight: bold;
         color: black;
@@ -368,7 +368,9 @@
       <div class="logo1"></div>
       <div class="doctors-count-box" id="doctorsCountBox">
         <div class="count">0</div>
-        <div class="subtitle"><span class="text">Doctors</span> <span class="text1">across</span></div>
+        <div class="subtitle">
+          <span class="text">Doctors</span> <span class="text1">across</span>
+        </div>
         <div class="india"><span class="india-text">INDIA</span></div>
         <div class="footer-text">
           have participated for the novel initiative
@@ -398,7 +400,7 @@
       <div class="footer2" onclick="submitForm(event)"></div>
     </div>
 
-<script>
+    <script>
       function submitForm(event) {
         if (event) event.preventDefault();
         const name = document.getElementById("doctorName").value.trim();
@@ -429,28 +431,28 @@
 
       // Optimized counting animation - always completes in ~2 seconds
       function animateCount(element, target) {
-        const duration = 2000; // Always 2 seconds regardless of target
+        const duration = 2000; // Always 2 seconds
         const startTime = performance.now();
-        const startValue = 0;
-        
+        const startValue = 100; // Static start value
+        const endValue = startValue + target;
+
         function updateCount(currentTime) {
           const elapsed = currentTime - startTime;
-          if (elapsed > duration) {
-            element.textContent = `${target}+`;
-            element.classList.add('celebrate');
-            setTimeout(() => element.classList.remove('celebrate'), 500);
-            return;
+          const progress = Math.min(elapsed / duration, 1); // From 0 to 1
+          const currentValue = Math.floor(
+            startValue + (endValue - startValue) * progress
+          );
+
+          element.textContent = `${currentValue}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            element.classList.add("celebrate");
+            setTimeout(() => element.classList.remove("celebrate"), 500);
           }
-          
-          const progress = elapsed / duration;
-          // Ease-out function for smoother deceleration at the end
-          const easedProgress = 1 - Math.pow(1 - progress, 3);
-          const currentValue = Math.floor(startValue + (target * easedProgress));
-          element.textContent = `${currentValue}+`;
-          
-          requestAnimationFrame(updateCount);
         }
-        
+
         requestAnimationFrame(updateCount);
       }
 
@@ -458,7 +460,7 @@
       function loadDoctorCount() {
         const countElement = document.querySelector("#doctorsCountBox .count");
         countElement.textContent = "0"; // Start from 0
-        
+
         fetch("https://crm.instamd.co.in/api/alkem/usercount")
           .then((res) => res.json())
           .then((data) => {

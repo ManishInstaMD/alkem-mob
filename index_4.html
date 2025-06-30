@@ -114,6 +114,26 @@
         max-width: 600px;
       }
 
+      .home-button {
+        position: absolute;
+        bottom: 101px;
+        right: 10px;
+        padding: 4px 11px;
+        font-size: 16px;
+        background-color: #ef7f1a;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 15;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+
+      .home-button:hover {
+        background-color: #d55d5d;
+      }
+
       /* Media Queries */
       @media (max-width: 1024px) {
         .logo {
@@ -185,8 +205,8 @@
         .logo {
           width: 180px;
           height: 205px;
-          top: 436px;
-          left: 123px;
+          top: 427px;
+          left: 108px;
         }
 
         .head_right_img {
@@ -231,6 +251,9 @@
       <div class="logo"></div>
       <div class="head_right_img"></div>
       <div class="head_right1_img"></div>
+      <button class="home-button" onclick="location.href='index.html'">
+        Home
+      </button>
 
       <!-- Doctor Name Display -->
       <div id="user-name" class="doctor-name">Welcome, Doctor</div>
