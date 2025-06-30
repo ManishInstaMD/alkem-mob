@@ -424,8 +424,10 @@
           .then((res) => res.json())
           .then((data) => {
             const doctor = data.data;
+            console.log("Submitted doctor:", doctor);
+            
             window.location.href = `index_4.html?user_id=${
-              doctor.id
+              userId
             }&doctor_name=${encodeURIComponent(doctor.name)}`;
           })
           .catch((err) => {

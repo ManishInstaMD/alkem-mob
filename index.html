@@ -263,9 +263,7 @@
       document.getElementById("goBack").href = `index.html?user_id=${userId}`;
       document.getElementById("goNext").href = `index_1.html?user_id=${userId}`;
     } else {
-      // fallback
-      document.getElementById("goBack").href = `index.html`;
-      document.getElementById("goNext").href = `index_1.html`;
+      window.location.href = "https://instamd.in/login.php";
     }
 
     console.log("user_id:", userId);
