@@ -246,12 +246,29 @@
       <div class="head_right1_img"></div>
       <div class="head_right2_img"></div>
 
-      <a href="index.html">
+      <a id="goBack" href="#">
         <div class="footer1"></div>
       </a>
-      <a href="index_1.html">
+      <a id="goNext" href="#">
         <div class="footer2"></div>
       </a>
     </div>
   </body>
+  <script>
+    // 👉 Forward user_id in links
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("user_id");
+
+    if (userId) {
+      document.getElementById("goBack").href = `index.html?user_id=${userId}`;
+      document.getElementById("goNext").href = `index_1.html?user_id=${userId}`;
+    } else {
+      // fallback
+      document.getElementById("goBack").href = `index.html`;
+      document.getElementById("goNext").href = `index_1.html`;
+    }
+
+    console.log("user_id:", userId);
+    
+  </script>
 </html>
