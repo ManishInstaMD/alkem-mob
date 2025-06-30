@@ -358,24 +358,25 @@
     <script>
       const logo1 = document.getElementById("logo1");
       let isOriginal = true;
+     let hasClicked = false; // Tracks if logo was clicked in current session
 
-      logo1.addEventListener("click", function () {
-        // Toggle image
-        this.style.backgroundImage = isOriginal
-          ? "url('images/green.png')"
-          : "url('images/red.png')";
-        isOriginal = !isOriginal;
-
-        // Boom effect
-        this.classList.add("boom");
-        setTimeout(() => this.classList.remove("boom"), 500);
-
-        // Fireworks
-        const rect = this.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-        fireworkBurst(x, y);
-        sessionStorage.setItem("count", "1");
+      logo1.addEventListener("click", function() {
+        if (!hasClicked) {
+          hasClicked = true;
+          
+          // Visual effects
+          this.classList.add("boom");
+          setTimeout(() => this.classList.remove("boom"), 500);
+          
+          // Change image
+          this.style.backgroundImage = "url('images/green.png')";
+          
+          // Fireworks
+          const rect = this.getBoundingClientRect();
+          fireworkBurst(rect.left + rect.width/2, rect.top + rect.height/2);
+        }
+        console.log("Logo clicked");
+        
       });
 
       const canvas = document.getElementById("fireworks-canvas");
@@ -440,7 +441,7 @@
         const count = sessionStorage.getItem("count") || "0";
         document.getElementById(
           "goNext"
-        ).href = `index_3.html?user_id=${userId}&count=${count}`;
+        ).href = `index_3.html?user_id=${userId}&count=${hasClicked ?1 : 0}`;
       } else {
         // fallback
         document.getElementById("goBack").href = `index.html`;
