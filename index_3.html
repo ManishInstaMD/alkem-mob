@@ -91,56 +91,6 @@
         right: 5%;
       }
 
-      .curapholic {
-        background: url(images/calciapt-slide-4_5-1.png);
-        width: 100%;
-        max-width: 500px;
-        height: 200px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .curapholic2 {
-        background: url(images/calciapt-slide-4-2.png);
-        width: 100%;
-        max-width: 400px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 15%;
-        left: 5%;
-      }
-
-      .curapholic3 {
-        background: url(images/calciapt-slide-4-3.png);
-        width: 100%;
-        max-width: 400px;
-        height: 150px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 15%;
-        right: 5%;
-      }
-
-      .footer1 {
-        background: url(images/arrow_pre.webp);
-        width: 40px;
-        height: 40px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 45%;
-        left: 10px;
-        transform: rotate(180deg);
-        z-index: 10;
-      }
-
       .footer2 {
         background: url(images/nextButton.png);
         width: 150px;
@@ -236,10 +186,6 @@
           height: 200px;
         }
 
-        .curapholic {
-          height: 180px;
-        }
-
         .doctors-count-box {
           top: 12%;
           padding: 12px;
@@ -266,17 +212,6 @@
         .head_right1_img {
           top: 40%;
           height: 150px;
-        }
-
-        .curapholic {
-          top: 35%;
-          height: 150px;
-        }
-
-        .curapholic2,
-        .curapholic3 {
-          height: 120px;
-          bottom: 10%;
         }
 
         .doctors-count-box {
@@ -331,25 +266,6 @@
           right: 7%;
         }
 
-        .curapholic {
-          top: 30%;
-          height: 100px;
-        }
-
-        .curapholic2,
-        .curapholic3 {
-          height: 80px;
-          bottom: 8%;
-        }
-
-        .curapholic2 {
-          left: 3%;
-        }
-
-        .curapholic3 {
-          right: 3%;
-        }
-
         .doctors-count-box {
           top: 10%;
           padding: 8px;
@@ -383,12 +299,6 @@
           font-size: 14px;
         }
 
-        .footer1 {
-          width: 30px;
-          height: 30px;
-          bottom: 40%;
-        }
-
         .footer2 {
           width: 120px;
           height: 24px;
@@ -411,7 +321,7 @@
         font-size: 16px;
       }
 
-      /* Add these new styles to your existing CSS */
+      /* Animation styles */
       @keyframes celebrate {
         0% {
           transform: scale(1);
@@ -457,7 +367,7 @@
       <div class="logo"></div>
       <div class="logo1"></div>
       <div class="doctors-count-box" id="doctorsCountBox">
-        <div class="count">1000+</div>
+        <div class="count">0</div>
         <div class="subtitle"><span class="text">Doctors</span> <span class="text1">across</span></div>
         <div class="india"><span class="india-text">INDIA</span></div>
         <div class="footer-text">
@@ -485,19 +395,10 @@
         />
       </form>
 
-      <div class="curapholic"></div>
-      <div class="curapholic2"></div>
-      <div class="curapholic3"></div>
-
-      <a href="index_2.html">
-        <div class="footer1"></div>
-      </a>
-
-      <!-- Trigger form submit -->
       <div class="footer2" onclick="submitForm(event)"></div>
     </div>
 
-    <script>
+<script>
       function submitForm(event) {
         if (event) event.preventDefault();
         const name = document.getElementById("doctorName").value.trim();
@@ -526,19 +427,47 @@
           });
       }
 
+      // Optimized counting animation - always completes in ~2 seconds
+      function animateCount(element, target) {
+        const duration = 2000; // Always 2 seconds regardless of target
+        const startTime = performance.now();
+        const startValue = 0;
+        
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          if (elapsed > duration) {
+            element.textContent = `${target}+`;
+            element.classList.add('celebrate');
+            setTimeout(() => element.classList.remove('celebrate'), 500);
+            return;
+          }
+          
+          const progress = elapsed / duration;
+          // Ease-out function for smoother deceleration at the end
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
+          const currentValue = Math.floor(startValue + (target * easedProgress));
+          element.textContent = `${currentValue}+`;
+          
+          requestAnimationFrame(updateCount);
+        }
+        
+        requestAnimationFrame(updateCount);
+      }
+
       // Fetch total doctor count
       function loadDoctorCount() {
-        const countBox = document.getElementById("doctorsCountBox");
-
+        const countElement = document.querySelector("#doctorsCountBox .count");
+        countElement.textContent = "0"; // Start from 0
+        
         fetch("https://crm.instamd.co.in/api/alkem/usercount")
           .then((res) => res.json())
           .then((data) => {
             const total = data.total || 1000; // fallback
-            countBox.querySelector(".count").textContent = `${total}+`;
+            animateCount(countElement, total);
           })
           .catch((err) => {
             console.error("Error fetching count:", err);
-            countBox.querySelector(".count").textContent = "1000+";
+            animateCount(countElement, 1000); // fallback animation
           });
       }
 
