@@ -401,102 +401,90 @@
     </div>
 
     <script>
-  const params = new URLSearchParams(window.location.search);
-  const userId = params.get("user_id");
-  const urlCount = params.get("count"); // Get count from URL (0 or 1)
-  console.log("count:", urlCount);
-  console.log("user_id:", userId);
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get("user_id");
+      const count = params.get("count");
+      console.log("count:", count);
+      console.log("user_id:", userId);
 
-  function submitForm(event) {
-    if (event) event.preventDefault();
-    const name = document.getElementById("doctorName").value.trim();
-    const email = document.getElementById("doctorEmail").value.trim();
-    const user_id = userId;
-    if (!name || !email) {
-      alert("Please enter both name and email.");
-      return;
-    }
+      function submitForm(event) {
+        if (event) event.preventDefault();
+        const name = document.getElementById("doctorName").value.trim();
+        const email = document.getElementById("doctorEmail").value.trim();
+        const user_id = userId;
+        if (!name || !email) {
+          alert("Please enter both name and email.");
+          return;
+        }
 
-    const apiUrl = "https://crm.instamd.co.in/api/alkem/createdoctor";
-    fetch(apiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, user_id }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const doctor = data.data;
-        console.log("Submitted doctor:", doctor);
+        const apiUrl = "https://crm.instamd.co.in/api/alkem/createdoctor";
+        fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, user_id }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const doctor = data.data;
+            console.log("Submitted doctor:", doctor);
 
-        window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-          doctor.name
-        )}`;
-      })
-      .catch((err) => {
-        console.error("Submission error:", err);
-        alert("Error submitting form. Please try again.");
-      });
-  }
-
-  // Smooth counting animation
-  function animateCount(element, target, startFrom = 0) {
-    const duration = 500; // 2 seconds for animation
-    const startTime = performance.now();
-    const startValue = startFrom;
-    const endValue = target;
-
-    function updateCount(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Easing function for smooth animation
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const currentValue = Math.floor(startValue + (endValue - startValue) * easedProgress);
-
-      element.textContent = `${currentValue}`;
-
-      if (progress < 1) {
-        requestAnimationFrame(updateCount);
-      } else {
-        element.classList.add("celebrate");
-        setTimeout(() => element.classList.remove("celebrate"), 300);
+            window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+              doctor.name
+            )}`;
+          })
+          .catch((err) => {
+            console.error("Submission error:", err);
+            alert("Error submitting form. Please try again.");
+          });
       }
-    }
 
-    requestAnimationFrame(updateCount);
-  }
+      // Optimized counting animation - always completes in ~2 seconds
+      function animateCount(element, target) {
+        const duration = 500; // Reduced from 1000ms to 500ms for faster counting
+        const startTime = performance.now();
+        const startValue = 100; // Static start value
+        const endValue = startValue + target;
 
-  // Fetch total doctor count
-  function loadDoctorCount() {
-    const countElement = document.querySelector("#doctorsCountBox .count");
-    
-    fetch("https://crm.instamd.co.in/api/alkem/usercount")
-      .then((res) => res.json())
-      .then((data) => {
-        const apiCount = data.total || 1000; // fallback
-        
-        if (urlCount === "1") {
-          // If count=1 in URL, animate from 0 to API count
-          countElement.textContent = "0";
-          animateCount(countElement, apiCount, 0);
-        } else {
-          // If count=0 or not specified, show API count immediately
-          countElement.textContent = apiCount;
-          
-          // If API count is 1, show it with a small animation
-          if (apiCount === 1) {
-            setTimeout(() => {
-              animateCount(countElement, 1, 0);
-            }, 500);
+        function updateCount(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Use ease-out for faster initial movement
+          const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
+          const currentValue = Math.floor(
+            startValue + (endValue - startValue) * easedProgress
+          );
+
+          element.textContent = `${currentValue}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            element.classList.add("celebrate");
+            setTimeout(() => element.classList.remove("celebrate"), 300); // Shorter celebration
           }
         }
-      })
-      .catch((err) => {
-        console.error("Error fetching count:", err);
-        countElement.textContent = "1000"; // fallback value
-      });
-  }
 
-  window.onload = loadDoctorCount;
-</script>
+        requestAnimationFrame(updateCount);
+      }
+
+      // Fetch total doctor count
+      function loadDoctorCount() {
+        const countElement = document.querySelector("#doctorsCountBox .count");
+        countElement.textContent = "0"; // Start from 0
+
+        fetch("https://crm.instamd.co.in/api/alkem/usercount")
+          .then((res) => res.json())
+          .then((data) => {
+            const total = data.total || 1000; // fallback
+            animateCount(countElement, total);
+          })
+          .catch((err) => {
+            console.error("Error fetching count:", err);
+            animateCount(countElement, 1000); // fallback animation
+          });
+      }
+
+      window.onload = loadDoctorCount;
+    </script>
   </body>
 </html>
