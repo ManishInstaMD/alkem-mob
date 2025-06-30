@@ -428,9 +428,35 @@
             const doctor = data.data;
             console.log("Submitted doctor:", doctor);
 
-            window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-              doctor.name
-            )}`;
+            // ✅ Call your mail API here
+            fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                doctorName: doctor.name,
+                toEmail: doctor.email,
+              }),
+            })
+              .then((res) => res.json())
+              .then((mailRes) => {
+                console.log("Mail sent response:", mailRes);
+                // ✅ Then redirect
+                window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+                  doctor.name
+                )}&doctor_email=${encodeURIComponent(
+                  doctor.email
+                )}&count=${count}`;
+              })
+              .catch((err) => {
+                console.error("Mail sending failed:", err);
+                alert("Form saved, but email failed to send.");
+                // Still redirect if needed
+                window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+                  doctor.name
+                )}&doctor_email=${encodeURIComponent(
+                  doctor.email
+                )}&count=${count}`;
+              });
           })
           .catch((err) => {
             console.error("Submission error:", err);
