@@ -401,10 +401,15 @@
     </div>
 
     <script>
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get("user_id");
+      console.log("user_id:", userId);
+      
       function submitForm(event) {
         if (event) event.preventDefault();
         const name = document.getElementById("doctorName").value.trim();
         const email = document.getElementById("doctorEmail").value.trim();
+        const user_id = userId;
         if (!name || !email) {
           alert("Please enter both name and email.");
           return;
@@ -414,7 +419,7 @@
         fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email }),
+          body: JSON.stringify({ name, email, user_id }),
         })
           .then((res) => res.json())
           .then((data) => {
