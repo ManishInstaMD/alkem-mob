@@ -343,7 +343,7 @@
       <div class="head_right2_img"></div>
       <div class="head_right3_img"></div>
       <div class="curapholic"></div>
-       <a id="goBack" href="#">
+      <a id="goBack" href="#">
         <div class="footer1"></div>
       </a>
       <a id="goNext" href="#">
@@ -375,6 +375,7 @@
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
         fireworkBurst(x, y);
+        sessionStorage.setItem("count", "1");
       });
 
       const canvas = document.getElementById("fireworks-canvas");
@@ -430,23 +431,23 @@
         }, 30);
       }
 
-
-
-       // 👉 Forward user_id in links
+      // 👉 Forward user_id in links
       const params = new URLSearchParams(window.location.search);
       const userId = params.get("user_id");
 
       if (userId) {
         document.getElementById("goBack").href = `index.html?user_id=${userId}`;
-        document.getElementById("goNext").href = `index_3.html?user_id=${userId}`;
+        const count = sessionStorage.getItem("count") || "0";
+        document.getElementById(
+          "goNext"
+        ).href = `index_3.html?user_id=${userId}&count=${count}`;
       } else {
         // fallback
         document.getElementById("goBack").href = `index.html`;
         document.getElementById("goNext").href = `index_3.html`;
       }
 
-  console.log("user_id:", userId);
-
+      console.log("user_id:", userId);
     </script>
   </body>
 </html>

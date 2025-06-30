@@ -403,8 +403,10 @@
     <script>
       const params = new URLSearchParams(window.location.search);
       const userId = params.get("user_id");
+      const count = params.get("count");
+      console.log("count:", count);
       console.log("user_id:", userId);
-      
+
       function submitForm(event) {
         if (event) event.preventDefault();
         const name = document.getElementById("doctorName").value.trim();
@@ -425,10 +427,10 @@
           .then((data) => {
             const doctor = data.data;
             console.log("Submitted doctor:", doctor);
-            
-            window.location.href = `index_4.html?user_id=${
-              userId
-            }&doctor_name=${encodeURIComponent(doctor.name)}`;
+
+            window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+              doctor.name
+            )}`;
           })
           .catch((err) => {
             console.error("Submission error:", err);
