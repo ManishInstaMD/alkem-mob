@@ -343,10 +343,10 @@
       <div class="head_right2_img"></div>
       <div class="head_right3_img"></div>
       <div class="curapholic"></div>
-      <a href="index_1.html">
+       <a id="goBack" href="#">
         <div class="footer1"></div>
       </a>
-      <a href="index_3.html">
+      <a id="goNext" href="#">
         <div class="footer2"></div>
       </a>
     </div>
@@ -429,6 +429,24 @@
           }
         }, 30);
       }
+
+
+
+       // 👉 Forward user_id in links
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get("user_id");
+
+      if (userId) {
+        document.getElementById("goBack").href = `index.html?user_id=${userId}`;
+        document.getElementById("goNext").href = `index_3.html?user_id=${userId}`;
+      } else {
+        // fallback
+        document.getElementById("goBack").href = `index.html`;
+        document.getElementById("goNext").href = `index_3.html`;
+      }
+
+
+
     </script>
   </body>
 </html>
