@@ -431,16 +431,18 @@
 
       // Optimized counting animation - always completes in ~2 seconds
       function animateCount(element, target) {
-        const duration = 2000; // Always 2 seconds
+        const duration = 500; // Reduced from 1000ms to 500ms for faster counting
         const startTime = performance.now();
         const startValue = 100; // Static start value
         const endValue = startValue + target;
 
         function updateCount(currentTime) {
           const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1); // From 0 to 1
+          const progress = Math.min(elapsed / duration, 1);
+          // Use ease-out for faster initial movement
+          const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease-out
           const currentValue = Math.floor(
-            startValue + (endValue - startValue) * progress
+            startValue + (endValue - startValue) * easedProgress
           );
 
           element.textContent = `${currentValue}`;
@@ -449,7 +451,7 @@
             requestAnimationFrame(updateCount);
           } else {
             element.classList.add("celebrate");
-            setTimeout(() => element.classList.remove("celebrate"), 500);
+            setTimeout(() => element.classList.remove("celebrate"), 300); // Shorter celebration
           }
         }
 
