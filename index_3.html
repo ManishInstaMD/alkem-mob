@@ -409,27 +409,35 @@
 
       function submitForm(event) {
         if (event) event.preventDefault();
+
         const name = document.getElementById("doctorName").value.trim();
         const email = document.getElementById("doctorEmail").value.trim();
         const user_id = userId;
+
         if (!name || !email) {
           alert("Please enter both name and email.");
           return;
         }
 
         const apiUrl = "https://crm.instamd.co.in/api/alkem/createdoctor";
+
         fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, user_id }),
         })
-          .then((res) => res.json())
-          .then((data) => {
-            const doctor = data.data;
-            console.log("Submitted doctor:", doctor);
+          .then(async (res) => {
+            const json = await res.json();
+            if (!res.ok) {
+              throw new Error(json.message || "Doctor creation failed");
+            }
+            if (!json.data) {
+              throw new Error("No doctor data returned from server");
+            }
 
-            // ✅ Call your mail API here
-            fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
+            const doctor = json.data;
+
+            return fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
@@ -437,10 +445,13 @@
                 toEmail: doctor.email,
               }),
             })
-              .then((res) => res.json())
-              .then((mailRes) => {
-                console.log("Mail sent response:", mailRes);
-                // ✅ Then redirect
+              .then(async (res2) => {
+                const mailRes = await res2.json();
+                if (!res2.ok) {
+                  throw new Error(mailRes.message || "Invite email failed");
+                }
+
+                // ✅ Success: Redirect
                 window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
                   doctor.name
                 )}&doctor_email=${encodeURIComponent(
@@ -448,19 +459,18 @@
                 )}&count=${count}`;
               })
               .catch((err) => {
-                console.error("Mail sending failed:", err);
-                alert("Form saved, but email failed to send.");
-                // Still redirect if needed
+                console.error("Mail sending failed:", err.message);
+                alert("Form saved, but email failed to send: " + err.message);
+
+                // Still redirect
                 window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-                  doctor.name
-                )}&doctor_email=${encodeURIComponent(
-                  doctor.email
-                )}&count=${count}`;
+                  name
+                )}&doctor_email=${encodeURIComponent(email)}&count=${count}`;
               });
           })
           .catch((err) => {
-            console.error("Submission error:", err);
-           alert("Error submitting form: " + err.message);
+            console.error("Doctor creation failed:", err.message);
+            alert("Error submitting form: " + err.message);
           });
       }
 
