@@ -428,15 +428,15 @@
         })
           .then(async (res) => {
             const json = await res.json();
-            if (!res.ok) {
+
+            if (!res.ok || !json.data) {
+              // Don't proceed if doctor creation failed or .data is missing
               throw new Error(json.message || "Doctor creation failed");
-            }
-            if (!json.data) {
-              throw new Error("No doctor data returned from server");
             }
 
             const doctor = json.data;
 
+            // ✅ Try sending email invite
             return fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -447,11 +447,12 @@
             })
               .then(async (res2) => {
                 const mailRes = await res2.json();
+
                 if (!res2.ok) {
                   throw new Error(mailRes.message || "Invite email failed");
                 }
 
-                // ✅ Success: Redirect
+                // ✅ All success → Redirect
                 window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
                   doctor.name
                 )}&doctor_email=${encodeURIComponent(
@@ -459,18 +460,15 @@
                 )}&count=${count}`;
               })
               .catch((err) => {
+                // ✅ Save succeeded, but email failed — stay or still redirect as per your choice
                 console.error("Mail sending failed:", err.message);
-                alert("Form saved, but email failed to send: " + err.message);
-
-                // Still redirect
-                window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-                  name
-                )}&doctor_email=${encodeURIComponent(email)}&count=${count}`;
+                alert("Doctor saved, but email failed: " + err.message);
               });
           })
           .catch((err) => {
+            // ❌ Do not redirect
             console.error("Doctor creation failed:", err.message);
-            alert("Error submitting form: " + err.message);
+            alert("Error: " + err.message);
           });
       }
 
