@@ -460,7 +460,7 @@
           })
           .catch((err) => {
             console.error("Submission error:", err);
-            alert("Error submitting form. Please try again.");
+           alert("Error submitting form: " + err.message);
           });
       }
 
