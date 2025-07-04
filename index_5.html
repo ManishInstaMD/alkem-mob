@@ -91,9 +91,10 @@
       function downloadCSV() {
         if (!userData.length) return;
 
-        let csv = "ID,Name,Email,User ID createdAt updatedAt\n";
+        let csv = "ID,Name,Email,User ID,Created At,Updated At\n";
+
         userData.forEach((user) => {
-          csv += `${user.id},"${user.name}","${user.email}",${user.user_id} ${user.createdAt} ${user.updatedAt}\n`;
+          csv += `${user.id},"${user.name}","${user.email}",${user.user_id},${user.createdAt},${user.updatedAt}\n`;
         });
 
         const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
