@@ -437,38 +437,38 @@
             const doctor = json.data;
 
             // ✅ Redirect directly after doctor creation
-            // window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-            //   doctor.name
-            // )}&doctor_email=${encodeURIComponent(doctor.email)}&count=${count}`;
+            window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+              doctor.name
+            )}&doctor_email=${encodeURIComponent(doctor.email)}&count=${count}`;
 
             // ✅ Try sending email invite
-            return fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                doctorName: doctor.name,
-                toEmail: doctor.email,
-              }),
-            })
-              .then(async (res2) => {
-                const mailRes = await res2.json();
+            // return fetch("https://crm.instamd.co.in/api/alkem/send-invite", {
+            //   method: "POST",
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify({
+            //     doctorName: doctor.name,
+            //     toEmail: doctor.email,
+            //   }),
+            // })
+            //   .then(async (res2) => {
+            //     const mailRes = await res2.json();
 
-                if (!res2.ok) {
-                  throw new Error(mailRes.message || "Invite email failed");
-                }
+            //     if (!res2.ok) {
+            //       throw new Error(mailRes.message || "Invite email failed");
+            //     }
 
-                // ✅ All success → Redirect
-                window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
-                  doctor.name
-                )}&doctor_email=${encodeURIComponent(
-                  doctor.email
-                )}&count=${count}`;
-              })
-            .catch((err) => {
-              // ✅ Save succeeded, but email failed — stay or still redirect as per your choice
-              console.error("Mail sending failed:", err.message);
-              alert("Doctor saved, but email failed: " + err.message);
-            });
+            //     // ✅ All success → Redirect
+            //     window.location.href = `index_4.html?user_id=${userId}&doctor_name=${encodeURIComponent(
+            //       doctor.name
+            //     )}&doctor_email=${encodeURIComponent(
+            //       doctor.email
+            //     )}&count=${count}`;
+            //   })
+            // .catch((err) => {
+            //   // ✅ Save succeeded, but email failed — stay or still redirect as per your choice
+            //   console.error("Mail sending failed:", err.message);
+            //   alert("Doctor saved, but email failed: " + err.message);
+            // });
           })
           .catch((err) => {
             // ❌ Do not redirect
